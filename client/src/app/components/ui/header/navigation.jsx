@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Navigation = ({ categories, onSelectCategory, selectedCategory }) => {
     return (
@@ -8,11 +9,13 @@ const Navigation = ({ categories, onSelectCategory, selectedCategory }) => {
                     key={category.name}
                     className={selectedCategory === category.name ? "nav__item_active" : ""}
                 >
-                    <p
+                    <Link
+                        to={`/${category.name}`}
+                        className="nav__link"
                         onClick={() => onSelectCategory(category.name)}
                     >
                         {category.name}
-                    </p>
+                    </Link>
                 </div>
             ))}
         </div>

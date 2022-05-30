@@ -1,25 +1,32 @@
 import React from 'react';
-import Products from '../ui/products/products';
-import { useParams } from 'react-router-dom';
+import { useParams } from "react-router";
+import ProductsPage from '../page/productsPage';
 import ProductPage from '../page/productPage';
 
-const Main = ({ products, selectedCategory }) => {
-    console.log(products);
+const Main = ({ selectedCategory, selectedCurrency }) => {
     const params = useParams();
-    const { productId } = params;
+    const { categoryName, productId } = params;
+    // console.log( selectedCategory)
     return (
-        <>
-            {!productId ? (
-                <>
-                    <h1
-                        className='category-title'>{selectedCategory}
-                    </h1>
-                    <Products products={products} />
-                </>
+        <section className="main">
+            {productId ? (
+                <ProductPage
+                    productId={productId}
+                    selectedCategory={selectedCategory}
+                    selectedCurrency={selectedCurrency}
+                />
             ) : (
-                <ProductPage productId={productId} />
+                <>
+                    {/* <h1
+                        className='category-title'>selectedCategory
+                    </h1> */}
+                    <ProductsPage
+                        selectedCategory={selectedCategory}
+                        selectedCurrency={selectedCurrency}
+                    />
+                </>
             )}
-        </>
+        </section>
         
     );
 };

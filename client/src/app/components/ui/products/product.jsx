@@ -1,22 +1,27 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+import Price from "../price";
+import ImageContainer from "./imageContainer";
+import emptyCart from "../../../img/empty-cart.png";
 
-const Product = ({ product }) => {
+const Product = ({ product, selectedCategory, selectedCurrency }) => {
+    const history = useHistory();
     return (
-        <div className="products__item">
-            <div className="product-card">
-                <div className="product-card__img">
-                    <img className={
-                        (product.inStock === false ? "out" : "in") +
-                            "-of-stack"} src={product.gallery[0]} alt={product.name}
-                    />
-                    {product.inStock === false &&
-                        <h2 className="out-of-stack__text">
-                            out of stock
-                        </h2>
-                    }
-                </div>
+        <div className="products__item" onClick={() => history.push(`/${selectedCategory}/${product.id}`)}>
+            <ImageContainer
+                height="330px"
+                width="354px"
+                src={product.gallery[0]}
+            />
+            <div className="products__item__content">
                 <h2>{product.name}</h2>
-                <p>{product.prices[0].amount}</p>
+                <Price prices={product.prices} selectedCurrency={selectedCurrency} />
+            </div>
+            <div
+                className="add-card__mini-button"
+                onClick={() => console.log(product.id)}
+            >
+                <img src={emptyCart} alt="empty cart img" />
             </div>
         </div>
     );

@@ -1,10 +1,9 @@
 import React from "react";
 
-const CartOverlay = ({ cartProducts }) => {
-    const cartQuantity = cartProducts.length;
+const CartOverlay = () => {
     return (
         <div className="cart-overlay cart-shadow">
-            My Bag. {cartQuantity} items
+            My Bag. X items
         </div>
     );
 };

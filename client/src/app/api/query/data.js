@@ -1,47 +1,47 @@
-import { gql } from "@apollo/client";
+// import { gql } from "@apollo/client";
 
-export const API = gql`
-    query {
-        currencies {
-            label,
-            symbol
-        },
+// export const API = gql`
+//     query {
+//         currencies {
+//             label,
+//             symbol
+//         },
 
-        categories {
-            name
-        },
+//         categories {
+//             name
+//         },
 
-        category {
-            name,
-            products {
-                id,
-                name,
-                inStock,
-                gallery,
-                description,
-                category,
-                attributes {
-                    id,
-                    name,
-                    type,
-                    items {
-                    displayValue,
-                    id,
-                    value
-                    }
-                },
-                prices {
-                    currency {
-                        label,
-                        symbol
-                    }
-                    amount
-                },
-                brand
-            }
-        }
-    }
-`
+//         category {
+//             name,
+//             products {
+//                 id,
+//                 name,
+//                 inStock,
+//                 gallery,
+//                 description,
+//                 category,
+//                 attributes {
+//                     id,
+//                     name,
+//                     type,
+//                     items {
+//                     displayValue,
+//                     id,
+//                     value
+//                     }
+//                 },
+//                 prices {
+//                     currency {
+//                         label,
+//                         symbol
+//                     }
+//                     amount
+//                 },
+//                 brand
+//             }
+//         }
+//     }
+// `
 
 // categories {
 //     name

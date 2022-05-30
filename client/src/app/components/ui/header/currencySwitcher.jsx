@@ -1,12 +1,13 @@
 import React from "react";
 import arrowDown from "../../../img/arrow-down.png";
-import arrowUp from "../../../img/arrow-up.png";
-
+import CurrencySelect from "./currencySelect";
 
 const CurrencySwitcher = ({
+    currencies,
     selectedCurrency,
     onShowSelectionCurrency,
-    isCurrencySelect,
+    onSelectCurrency,
+    isCurrencySelect
 }) => {
     return (
         <>
@@ -17,9 +18,11 @@ const CurrencySwitcher = ({
                 <span>
                     {selectedCurrency}
                 </span>
-                <img src={isCurrencySelect ? arrowUp : arrowDown} alt="arrow" />
+                <img className={isCurrencySelect ? "arrow" : "arrow-rotate"} src={arrowDown} alt="arrow" />
             </div>
-            
+            {isCurrencySelect && (
+                <CurrencySelect currencies={currencies} onSelectCurrency={onSelectCurrency} />      
+            )}
         </>
     );
 };

@@ -1,7 +1,6 @@
 import React from "react";
 
 const CurrencySelect = ({ currencies, onSelectCurrency }) => {
-
     return (
         <ul className="currency-select cart-shadow">
             {currencies.map(currency => (
