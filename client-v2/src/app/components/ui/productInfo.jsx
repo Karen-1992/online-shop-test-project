@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import Price from "./../common/price";
 import Attributes from "../common/attributes/attributes";
 import ProductTitle from "../common/productTitle";
@@ -20,21 +21,35 @@ const ProductInfo = ({
                 selectedAttributes={selectedAttributes}
             />
             <h3 className="price-title">price:</h3>
-            <Price prices={product.prices} selectedCurrency={selectedCurrency} />
+            <Price
+                prices={product.prices}
+                selectedCurrency={selectedCurrency}
+            />
             {product.inStock && (
                 <button
-                    className={"add-button" + (isValid ? " add-button-valid" : " ")}
+                    className={
+                        "add-button" + (isValid ? " add-button-valid" : " ")
+                    }
                     onClick={onAddToCart}
                 >
                     Add to cart
                 </button>
             )}
-            <div className="product-page__info__description"
-                dangerouslySetInnerHTML={{__html: product.description}}
-            >
-            </div>
+            <div
+                className="product-page__info__description"
+                dangerouslySetInnerHTML={{ __html: product.description }}
+            ></div>
         </div>
     );
+};
+
+ProductInfo.propTypes = {
+    product: PropTypes.object,
+    selectedCurrency: PropTypes.string,
+    onSelectAttributes: PropTypes.func,
+    selectedAttributes: PropTypes.object,
+    onAddToCart: PropTypes.func,
+    isValid: PropTypes.bool
 };
 
 export default ProductInfo;

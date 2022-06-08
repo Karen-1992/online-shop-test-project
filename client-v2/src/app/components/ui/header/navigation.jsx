@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const Navigation = ({ categories, onSelectCategory, selectedCategory }) => {
@@ -7,7 +8,11 @@ const Navigation = ({ categories, onSelectCategory, selectedCategory }) => {
             {categories.map((category) => (
                 <div
                     key={category.name}
-                    className={selectedCategory === category.name ? "nav__item_active" : ""}
+                    className={
+                        selectedCategory === category.name
+                            ? "nav__item_active"
+                            : ""
+                    }
                 >
                     <Link
                         to={`/${category.name}`}
@@ -20,6 +25,12 @@ const Navigation = ({ categories, onSelectCategory, selectedCategory }) => {
             ))}
         </div>
     );
+};
+
+Navigation.propTypes = {
+    categories: PropTypes.array,
+    onSelectCategory: PropTypes.func,
+    selectedCategory: PropTypes.string
 };
 
 export default Navigation;

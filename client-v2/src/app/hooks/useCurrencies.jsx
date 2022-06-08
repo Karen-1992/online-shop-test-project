@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import { GET_CURRENCIES } from "../query/currencies";
+import PropTypes from "prop-types";
 
 const CurrenciesContext = React.createContext();
 
@@ -25,7 +26,7 @@ const CurrenciesProvider = ({ children }) => {
     }, [data]);
 
     const handleShowSelectionCurrency = () => {
-        setIsCurrencySelect(prevState => !prevState);
+        setIsCurrencySelect((prevState) => !prevState);
     };
 
     const handleSelectCurrency = (selectedCurrencySymbol) => {
@@ -33,7 +34,7 @@ const CurrenciesProvider = ({ children }) => {
         setSelectedCurrency(selectedCurrencySymbol);
         setIsCurrencySelect(false);
     };
-   
+
     return (
         <CurrenciesContext.Provider
             value={{
@@ -49,5 +50,11 @@ const CurrenciesProvider = ({ children }) => {
     );
 };
 
+CurrenciesProvider.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ])
+};
 
 export default CurrenciesProvider;

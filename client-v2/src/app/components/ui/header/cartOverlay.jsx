@@ -1,8 +1,8 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 
-
-const CartOverlay = ({ cartOrder, selectedCurrency, clearCart, quantity }) => {
+const CartOverlay = ({ clearCart, quantity }) => {
     const history = useHistory();
     return (
         <div className="cart-overlay cart-shadow">
@@ -21,14 +21,16 @@ const CartOverlay = ({ cartOrder, selectedCurrency, clearCart, quantity }) => {
             >
                 View Bag
             </button>
-            <button
-                onClick={() => clearCart()}
-                className="check-out__button"
-            >
+            <button onClick={() => clearCart()} className="check-out__button">
                 Check out
             </button>
         </div>
     );
+};
+
+CartOverlay.propTypes = {
+    clearCart: PropTypes.func,
+    quantity: PropTypes.number
 };
 
 export default CartOverlay;

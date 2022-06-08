@@ -14,18 +14,25 @@ const App = () => {
             <CartProvider>
                 <CategoriesProvider>
                     <CurrenciesProvider>
-                            <Header />
-                            <Switch>
-                                <Route path="/cart/:order?" exact component={Cart} />
-                                {/* <Route path="/order" exact component={Order} /> */}
-                                <Route path="/:categoryName?/:productId?" exact component={Products} />
-                                <Redirect to="/" />
-                            </Switch>
+                        <Header />
+                        <Switch>
+                            <Route
+                                path="/cart/:order?"
+                                exact
+                                component={Cart}
+                            />
+                            <Route
+                                path="/:categoryName?/:productId?"
+                                exact
+                                component={Products}
+                            />
+                            <Redirect to="/" />
+                        </Switch>
                     </CurrenciesProvider>
                 </CategoriesProvider>
             </CartProvider>
         </div>
     );
-}
+};
 
 export default App;

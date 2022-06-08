@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 
 export const CartContext = React.createContext();
 
@@ -10,7 +11,7 @@ const CartProvider = ({ children }) => {
     const [cartOrder, setCartOrder] = useState(
         JSON.parse(localStorage.getItem("cartOrder")) || []
     );
-    const [quantity, setQuantity] = useState(getQuantity(cartOrder))
+    const [quantity, setQuantity] = useState(getQuantity(cartOrder));
     useEffect(() => {
         localStorage.setItem("cartOrder", JSON.stringify(cartOrder));
         setQuantity(getQuantity(cartOrder));
@@ -20,7 +21,7 @@ const CartProvider = ({ children }) => {
         const result = [];
         const map = new Map();
         for (const item of order) {
-            if(!map.has(item.id)){
+            if (!map.has(item.id)) {
                 map.set(item.id, true);
                 result.push({
                     id: item.id,
@@ -29,7 +30,7 @@ const CartProvider = ({ children }) => {
                     quantity: item.quantity
                 });
             } else {
-                const index = result.findIndex(i => i.id === item.id);
+                const index = result.findIndex((i) => i.id === item.id);
                 result[index].quantity += item.quantity;
             }
         }
@@ -50,7 +51,7 @@ const CartProvider = ({ children }) => {
     }
 
     function addToCart(item) {
-        setCartOrder(prevState => [ ...prevState, item ]);
+        setCartOrder((prevState) => [...prevState, item]);
     }
 
     function clearCart() {
@@ -71,7 +72,7 @@ const CartProvider = ({ children }) => {
             const prodPrice = prod.product.prices.find((price) => {
                 return price.currency.symbol === selectedCurrency;
             });
-            const totalProdPrice = prodPrice.amount *  prod.quantity;
+            const totalProdPrice = prodPrice.amount * prod.quantity;
             totalPrice += totalProdPrice;
         }
         return totalPrice;
@@ -108,5 +109,11 @@ const CartProvider = ({ children }) => {
     );
 };
 
+CartProvider.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ])
+};
 
 export default CartProvider;

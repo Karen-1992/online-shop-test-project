@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useState } from "react";
 import { useProduct } from "../../../hooks/useProduct";
 import { useCurrencies } from "../../../hooks/useCurrencies";
 import { useCart } from "../../../hooks/useCart";
@@ -13,7 +13,7 @@ const ProductPage = () => {
     const { selectedCurrency } = useCurrencies();
     const { addToCart, cartOrder, updateQuantity } = useCart();
     const [selectedImageIndex, setSelectedImageIndex] = useState(0);
-   
+
     const handleSelectAttributes = (name, value) => {
         changeAttributes(name, value);
         // setSelectedAttributes(prevState => ({
@@ -23,13 +23,13 @@ const ProductPage = () => {
     };
 
     // const validate = () => {
-    //     const isValid = 
+    //     const isValid =
     //         Object.keys(selectedAttributes).length === product?.attributes?.length
     //         && Object.keys(selectedAttributes).length !== 0;
     //     if (isValid) setIsValid(true);
     //     return isValid;
     // };
-    
+
     const handleSelectImageFromGallery = (index) => {
         setSelectedImageIndex(index);
     };
@@ -37,11 +37,11 @@ const ProductPage = () => {
         if (index >= product.gallery.length - 1) {
             return setSelectedImageIndex(0);
         }
-        setSelectedImageIndex(prevState => prevState + 1);
+        setSelectedImageIndex((prevState) => prevState + 1);
     };
     const handleAddToCart = () => {
         // if (!isValid) return;
-       
+
         const productId = generateProductId(product, selectedAttributes);
         const newItem = {
             id: productId,
@@ -56,10 +56,10 @@ const ProductPage = () => {
         } else {
             addToCart(newItem);
         }
-    }
+    };
     return (
         <>
-            { product?.gallery && (
+            {product?.gallery && (
                 <div className="product-page-container">
                     <ImagesBlock
                         gallery={product.gallery}
@@ -88,5 +88,5 @@ const ProductPage = () => {
         </>
     );
 };
- 
+
 export default ProductPage;

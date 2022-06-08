@@ -1,42 +1,42 @@
 @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;700&family=Roboto&display=swap");
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-  position: relative;
-  max-width: 1440px;
-  min-height: 100vh;
-  margin: 0 auto;
-  padding: 80px 100px;
-  border: 1px solid green;
-  background: #fff;
-  color: #1d1f22;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 400px;
-  font-size: 18px;
+    position: relative;
+    max-width: 1440px;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 80px 100px;
+    border: 1px solid green;
+    background: #fff;
+    color: #1d1f22;
+    font-family: "Raleway", sans-serif;
+    font-weight: 400px;
+    font-size: 18px;
 }
 
 .wrapper {
-  margin: auto;
-  padding: 80px 0 0;
-  /* background:rgba(0, 0, 0, 0.041); */
+    margin: auto;
+    padding: 80px 0 0;
+    /* background:rgba(0, 0, 0, 0.041); */
 }
 
 button {
-  display: block;
-  font-size: 14px;
-  font-weight: 600;
-  color: #000;
-  text-transform: uppercase;
-  opacity: 0.8;
-  cursor: pointer;
-  transition: opacity 500ms ease, border 500ms ease;
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #000;
+    text-transform: uppercase;
+    opacity: 0.8;
+    cursor: pointer;
+    transition: opacity 500ms ease, border 500ms ease;
 }
 
 button:hover {
-  opacity: 1;
+    opacity: 1;
 }

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const ImageContainer = ({ width, height, src }) => {
     return (
@@ -6,7 +7,7 @@ const ImageContainer = ({ width, height, src }) => {
             style={{
                 position: "relative",
                 width: width,
-                height: height,
+                height: height
             }}
         >
             <img
@@ -22,6 +23,12 @@ const ImageContainer = ({ width, height, src }) => {
             />
         </div>
     );
-}
- 
+};
+
+ImageContainer.propTypes = {
+    width: PropTypes.string,
+    height: PropTypes.string,
+    src: PropTypes.string
+};
+
 export default ImageContainer;

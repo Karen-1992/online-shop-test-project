@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import ProductsItem from "../../ui/products/productsItem";
 import { useCategoryProducts } from "../../../hooks/useCategoryProducts";
 import { useCurrencies } from "../../../hooks/useCurrencies";
@@ -6,7 +6,6 @@ import { useCart } from "../../../hooks/useCart";
 import { generateProductId } from "../../../utils/generateProductId";
 import { getInitAttributes } from "../../../utils/getInitAttributes";
 import "./productsListPage.css";
-
 
 const ProductsListPage = () => {
     const { cartOrder, addToCart, updateQuantity } = useCart();
@@ -28,14 +27,14 @@ const ProductsListPage = () => {
         } else {
             addToCart(newItem);
         }
-    }
+    };
     return (
         <>
             <h1 className="category-title">{selectedCategory}</h1>
             <div className="products">
                 {categoryProducts.map((product) => (
                     <ProductsItem
-                        key={product.id} 
+                        key={product.id}
                         selectedCategory={selectedCategory}
                         product={product}
                         selectedCurrency={selectedCurrency}
@@ -43,7 +42,7 @@ const ProductsListPage = () => {
                     />
                 ))}
             </div>
-        </>           
+        </>
     );
 };
 

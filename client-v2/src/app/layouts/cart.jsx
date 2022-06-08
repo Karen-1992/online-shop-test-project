@@ -6,15 +6,7 @@ import Order from "../components/pages/orderPage/order";
 const Cart = () => {
     const params = useParams();
     const { order } = params;
-    return (
-        <>
-            {!order ? (
-                <CartPage />
-            ) : (
-                <Order />
-            )}
-        </>
-    );
+    return <>{!order ? <CartPage /> : <Order />}</>;
 };
 
 export default Cart;

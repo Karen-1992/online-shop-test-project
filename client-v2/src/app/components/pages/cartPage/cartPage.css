@@ -3,7 +3,6 @@
     flex-direction: column;
 }
 
-
 /* cart-item */
 .cart-item__container {
     width: 100%;
@@ -55,7 +54,7 @@
 }
 
 .carets-item:last-child {
-    margin-right: 0; 
+    margin-right: 0;
 }
 
 .quantity-switcher {
@@ -70,7 +69,7 @@
     height: 45px;
     width: 45px;
     /* cursor: pointer; */
-    border: 1px solid #1D1F22;
+    border: 1px solid #1d1f22;
     font-size: 30px;
     font-weight: 100;
 }
@@ -114,10 +113,9 @@
 
 .order-container button {
     height: 43px;
-    background: #5ECE7B;
+    background: #5ece7b;
     color: #fff;
     border: none;
-
 }
 .order__table {
     font-size: 24px;

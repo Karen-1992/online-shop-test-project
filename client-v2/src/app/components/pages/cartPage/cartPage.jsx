@@ -9,7 +9,6 @@ const CartPage = () => {
     const history = useHistory();
     const {
         cartOrder,
-        clearCart,
         updateQuantity,
         quantity,
         getTotalPrice,
@@ -17,9 +16,9 @@ const CartPage = () => {
     } = useCart();
     const { selectedCurrency } = useCurrencies();
     const taxPercent = 21;
-    const totalPrice = (getTotalPrice(selectedCurrency)).toFixed(2);
+    const totalPrice = getTotalPrice(selectedCurrency).toFixed(2);
     const taxAmount = (totalPrice * ((100 - taxPercent) / 100)).toFixed(2);
-    
+
     return (
         <>
             {cartOrder.length > 0 ? (
@@ -63,11 +62,16 @@ const CartPage = () => {
                                 </tr>
                                 <tr>
                                     <th>Total:</th>
-                                    <td>{totalPrice}{selectedCurrency}</td>
+                                    <td>
+                                        {totalPrice}
+                                        {selectedCurrency}
+                                    </td>
                                 </tr>
                             </tbody>
                         </table>
-                        <button onClick={() => history.push("/cart/order")}>Order</button>
+                        <button onClick={() => history.push("/cart/order")}>
+                            Order
+                        </button>
                     </div>
                 </div>
             ) : (

@@ -6,7 +6,7 @@ export const GET_CATEGORIES = gql`
             name
         }
     }
-`
+`;
 
 // const Categories = () => {
 //     const { data, loading, error } = useQuery(GET_CATEGORIES);

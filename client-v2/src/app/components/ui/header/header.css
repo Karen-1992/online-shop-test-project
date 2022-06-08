@@ -12,7 +12,6 @@ header {
     background: rgba(255, 0, 0, 0.101);
 }
 
-
 /* navigation */
 .navigation-container {
     height: 56px;
@@ -44,8 +43,8 @@ header {
 
 .logo {
     position: absolute;
-    left: calc(50% - 41px/2);
-    top: calc(50% - 41px/2);
+    left: calc(50% - 41px / 2);
+    top: calc(50% - 41px / 2);
     transition: all 800ms ease;
 }
 
@@ -113,7 +112,7 @@ header {
     cursor: pointer;
     transition: transform 300ms ease;
 }
-  
+
 .cart-image:hover {
     transform: scale(1.1);
 }
@@ -123,7 +122,7 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: #1D1F22;
+    background: #1d1f22;
     border-radius: 50%;
     color: #fff;
     font-size: 14px;
@@ -153,7 +152,6 @@ header {
     font-weight: 500;
 }
 
-
 .cart-overlay button {
     display: inline-block;
     /* margin-right: 10px; */
@@ -161,10 +159,9 @@ header {
     height: 43px;
 }
 
-
 .check-out__button {
     margin-left: 10px;
-    background: #5ECE7B;
+    background: #5ece7b;
     color: #fff;
     border: none;
 }

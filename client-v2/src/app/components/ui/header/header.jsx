@@ -5,17 +5,14 @@ import { useCart } from "../../../hooks/useCart";
 import Navigation from "./navigation";
 import CurrencySwitcher from "./currencySwitcher";
 import CartOverlay from "./cartOverlay";
-import logo from "../../../img/logo.png"
-import emptyCart from "../../../img/empty-cart.png"
+import logo from "../../../img/logo.png";
+import emptyCart from "../../../img/empty-cart.png";
 import "./header.css";
 import ImageContainer from "../../common/imageContainer";
 
 const Header = () => {
-    const {
-        categories,
-        handleSelectCategory,
-        selectedCategory
-    } = useCategories();
+    const { categories, handleSelectCategory, selectedCategory } =
+        useCategories();
     const {
         currencies,
         handleSelectCurrency,
@@ -26,7 +23,7 @@ const Header = () => {
     const { cartOrder, clearCart, quantity } = useCart();
     const [isCartOverlay, setIsCartOverlay] = useState(false);
     const handleShowCartOverlay = () => {
-        setIsCartOverlay(prevState => !prevState);
+        setIsCartOverlay((prevState) => !prevState);
     };
     return (
         <header>
@@ -48,18 +45,28 @@ const Header = () => {
                     onSelectCurrency={handleSelectCurrency}
                     isCurrencySelect={isCurrencySelect}
                 />
-                <div className="cart-image" onClick={() => handleShowCartOverlay()}>
+                <div
+                    className="cart-image"
+                    onClick={() => handleShowCartOverlay()}
+                >
                     <img src={emptyCart} alt="empty cart" />
-                    { cartOrder.length > 0 && (
+                    {cartOrder.length > 0 && (
                         <div className="cart-quantity">
                             <span>{quantity}</span>
                         </div>
                     )}
                 </div>
             </div>
-            {isCartOverlay && <CartOverlay cartOrder={cartOrder} quantity={quantity} selectedCurrency={selectedCurrency} clearCart={clearCart} />}
+            {isCartOverlay && (
+                <CartOverlay
+                    cartOrder={cartOrder}
+                    quantity={quantity}
+                    selectedCurrency={selectedCurrency}
+                    clearCart={clearCart}
+                />
+            )}
         </header>
     );
-}
- 
+};
+
 export default Header;

@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const ProductTitle = ({ brand, name }) => {
     return (
@@ -7,6 +8,11 @@ const ProductTitle = ({ brand, name }) => {
             <h3>{name}</h3>
         </div>
     );
+};
+
+ProductTitle.propTypes = {
+    brand: PropTypes.string,
+    name: PropTypes.string
 };
 
 export default ProductTitle;

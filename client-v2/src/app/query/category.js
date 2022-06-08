@@ -3,33 +3,33 @@ import { gql } from "@apollo/client";
 export const GET_CATEGORY = gql`
     query category($input: CategoryInput) {
         category(input: $input) {
-            name,
+            name
             products {
-                id,
-                name,
-                inStock,
-                gallery,
-                description,
-                category,
+                id
+                name
+                inStock
+                gallery
+                description
+                category
                 attributes {
-                    id,
-                    name,
-                    type,
+                    id
+                    name
+                    type
                     items {
-                    displayValue,
-                    id,
-                    value
+                        displayValue
+                        id
+                        value
                     }
-                },
+                }
                 prices {
                     currency {
-                        label,
+                        label
                         symbol
                     }
                     amount
-                },
+                }
                 brand
             }
         }
     }
-`
+`;

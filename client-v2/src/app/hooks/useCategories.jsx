@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { useQuery } from "@apollo/client";
 import { GET_CATEGORIES } from "../query/categories";
 
@@ -39,5 +40,11 @@ const CategoriesProvider = ({ children }) => {
     );
 };
 
+CategoriesProvider.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ])
+};
 
 export default CategoriesProvider;

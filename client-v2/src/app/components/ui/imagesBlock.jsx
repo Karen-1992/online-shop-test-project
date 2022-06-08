@@ -1,5 +1,6 @@
-import React from 'react';
-import ImageContainer from './../common/imageContainer';
+import React from "react";
+import PropTypes from "prop-types";
+import ImageContainer from "./../common/imageContainer";
 
 const ImagesBlock = ({ gallery, onSelectImageFromGallery }) => {
     return (
@@ -11,16 +12,17 @@ const ImagesBlock = ({ gallery, onSelectImageFromGallery }) => {
                         key={img}
                         onClick={() => onSelectImageFromGallery(index)}
                     >
-                        <ImageContainer
-                            height="80px"
-                            width="80px"
-                            src={img}
-                        />
+                        <ImageContainer height="80px" width="80px" src={img} />
                     </div>
                 ))}
             </div>
         </div>
     );
-}
- 
+};
+
+ImagesBlock.propTypes = {
+    gallery: PropTypes.array,
+    onSelectImageFromGallery: PropTypes.func
+};
+
 export default ImagesBlock;

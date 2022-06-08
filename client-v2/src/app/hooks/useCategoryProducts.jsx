@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import PropTypes from "prop-types";
 import { useQuery } from "@apollo/client";
 import { useCategories } from "./useCategories";
 import { GET_CATEGORY } from "../query/category";
@@ -14,7 +15,7 @@ const CategoryProductsProvider = ({ children }) => {
     const [categoryProducts, setCategoryProducts] = useState([]);
     const { data, loading, error } = useQuery(GET_CATEGORY, {
         variables: {
-            input: {title: selectedCategory}
+            input: { title: selectedCategory }
         }
     });
 
@@ -39,5 +40,11 @@ const CategoryProductsProvider = ({ children }) => {
     );
 };
 
+CategoryProductsProvider.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ])
+};
 
 export default CategoryProductsProvider;

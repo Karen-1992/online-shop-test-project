@@ -3,6 +3,7 @@ import { useQuery } from "@apollo/client";
 import { GET_PRODUCT } from "../query/product";
 import { useParams } from "react-router-dom";
 import { getInitAttributes } from "../utils/getInitAttributes";
+import PropTypes from "prop-types";
 
 const ProductContext = React.createContext();
 
@@ -24,20 +25,22 @@ const ProductProvider = ({ children }) => {
         if (!loading) {
             setProduct(data.product);
             if (productId) {
-                setSelectedAttributes(getInitAttributes(data.product.attributes))
+                setSelectedAttributes(
+                    getInitAttributes(data.product.attributes)
+                );
             }
-        } 
+        }
         if (error) {
             console.error("product error");
         }
     }, [data]);
 
-    function changeAttributes (name, value) {
-        setSelectedAttributes(prevState => ({
+    function changeAttributes(name, value) {
+        setSelectedAttributes((prevState) => ({
             ...prevState,
             [name]: value
-        }))
-    };
+        }));
+    }
     return (
         <ProductContext.Provider
             value={{
@@ -50,6 +53,13 @@ const ProductProvider = ({ children }) => {
             {!loading ? children : "Loading..."}
         </ProductContext.Provider>
     );
+};
+
+ProductProvider.propTypes = {
+    children: PropTypes.oneOfType([
+        PropTypes.arrayOf(PropTypes.node),
+        PropTypes.node
+    ])
 };
 
 export default ProductProvider;

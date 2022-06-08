@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 import { useHistory } from "react-router-dom";
 import ImageContainer from "../../common/imageContainer";
 import Price from "../../common/price";
@@ -15,15 +16,20 @@ const ProductsItem = ({
         const { target } = e;
         const targetClass = target.className;
         if (
-            targetClass !== "add-card__mini-button" && 
+            targetClass !== "add-card__mini-button" &&
             targetClass !== "add-card__mini-button__img"
-            ) {
-            history.push(`/${selectedCategory}/${product.id}`)
+        ) {
+            history.push(`/${selectedCategory}/${product.id}`);
         }
-    } 
+    };
     return (
-        <div className={"products__item" + (product.inStock === false ? " out-of-stack" : " ")} onClick={handleShowProductPage}>
-            
+        <div
+            className={
+                "products__item" +
+                (product.inStock === false ? " out-of-stack" : " ")
+            }
+            onClick={handleShowProductPage}
+        >
             <ImageContainer
                 height="330px"
                 width="354px"
@@ -52,6 +58,13 @@ const ProductsItem = ({
             )}
         </div>
     );
+};
+
+ProductsItem.propTypes = {
+    product: PropTypes.object,
+    selectedCategory: PropTypes.string,
+    selectedCurrency: PropTypes.string,
+    onAddToCart: PropTypes.func
 };
 
 export default ProductsItem;
