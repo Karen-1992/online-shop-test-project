@@ -51,7 +51,6 @@ const App = () => {
         }
     }, [currenciesData]);
 
-
     return (
         <div className='wrapper'>
             {data ? (

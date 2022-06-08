@@ -1,0 +1,139 @@
+.cart__container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* cart-item */
+.cart-item__container {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 24px 0;
+    border-top: 1px solid #e5e5e5;
+}
+
+.cart-item__container:last-child {
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.cart-item__right-block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 269px;
+    height: 288px;
+}
+
+.cart-item__image {
+    position: relative;
+}
+
+.carets {
+    position: absolute;
+    bottom: 16px;
+    right: 16px;
+    display: flex;
+}
+
+.carets-item {
+    display: flex;
+    justify-content: center;
+    height: 24px;
+    width: 24px;
+    margin-right: 8px;
+    padding-top: 2px;
+    background: rgba(0, 0, 0, 0.73);
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 300ms ease;
+}
+
+.carets-item:hover {
+    opacity: 1;
+}
+
+.carets-item:last-child {
+    margin-right: 0; 
+}
+
+.quantity-switcher {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.quantity-switcher button {
+    height: 45px;
+    width: 45px;
+    /* cursor: pointer; */
+    border: 1px solid #1D1F22;
+    font-size: 30px;
+    font-weight: 100;
+}
+
+.quantity-switcher p {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.order-container {
+    display: flex;
+    flex-direction: column;
+    width: 279px;
+}
+
+/* .total-price {
+    display: flex;
+    margin: 32px 0 16px;
+}
+
+.total-price p {
+    font-size: 24px;
+    margin-bottom: 8px;
+}
+
+.total-price__keys {
+    margin-right: 10px;
+}
+
+.total-price__keys p {
+    font-weight: 400;
+}
+
+.total-price__keys p:last-child {
+    font-weight: 500;
+}
+
+.total-price__values p {
+    font-weight: 700;
+} */
+
+.order-container button {
+    height: 43px;
+    background: #5ECE7B;
+    color: #fff;
+    border: none;
+
+}
+.order__table {
+    font-size: 24px;
+    margin: 32px 0 16px;
+    text-align: left;
+}
+
+.order__table tr {
+    line-height: 40px;
+}
+
+.order__table td {
+    font-weight: 700;
+}
+
+.order__table tr th {
+    font-weight: 400;
+    width: auto;
+}

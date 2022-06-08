@@ -6,8 +6,15 @@ import emptyCart from "../../../img/empty-cart.png";
 
 const Product = ({ product, selectedCategory, selectedCurrency }) => {
     const history = useHistory();
+    const handleShowProductPage = (e) => {
+        const { target } = e;
+        const targetClass = target.className;
+        if (targetClass !== "add-card__mini-button" && targetClass !== "add-card__mini-button__img") {
+            history.push(`/${selectedCategory}/${product.id}`)
+        }
+    } 
     return (
-        <div className="products__item" onClick={() => history.push(`/${selectedCategory}/${product.id}`)}>
+        <div className="products__item" onClick={handleShowProductPage}>
             <ImageContainer
                 height="330px"
                 width="354px"
@@ -19,9 +26,9 @@ const Product = ({ product, selectedCategory, selectedCurrency }) => {
             </div>
             <div
                 className="add-card__mini-button"
-                onClick={() => console.log(product.id)}
+                onClick={() => console.log("add to cart from mini button")}
             >
-                <img src={emptyCart} alt="empty cart img" />
+                <img className="add-card__mini-button__img" src={emptyCart} alt="empty cart img" />
             </div>
         </div>
     );

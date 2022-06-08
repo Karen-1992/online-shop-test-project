@@ -1,7 +1,7 @@
 import React from 'react';
-import ImageContainer from './imageContainer';
+import ImageContainer from './../common/imageContainer';
 
-const ImagesBlock = ({ gallery, onSelectImage }) => {
+const ImagesBlock = ({ gallery, onSelectImageFromGallery }) => {
     return (
         <div className="images-block">
             <div className="images-block__container">
@@ -9,7 +9,7 @@ const ImagesBlock = ({ gallery, onSelectImage }) => {
                     <div
                         className="images-block__item"
                         key={img}
-                        onClick={() => onSelectImage(index)}
+                        onClick={() => onSelectImageFromGallery(index)}
                     >
                         <ImageContainer
                             height="80px"

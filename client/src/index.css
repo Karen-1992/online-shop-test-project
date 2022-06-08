@@ -84,7 +84,7 @@ body {
   height: 52px;
   background: #5ECE7B;
   border-radius: 50%;
-  opacity: 1;
+  opacity: 0;
   transition: all 300ms;
   display: flex;
   align-items: center;
@@ -95,7 +95,7 @@ body {
 }
 
 
-.add-card__mini-button img {
+.add-card__mini-button__img {
   margin: auto;
 }
 
@@ -272,8 +272,30 @@ header {
 
 
 .images-block {
+  height: 511px;
+  overflow-y: scroll;
+  /* width: 700px; */
+}
+
+.images-block__container {
   display: flex;
   flex-direction: column;
+  justify-content: end;
+}
+
+.images-block {
+  overflow: auto;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.images-block::-webkit-scrollbar {
+  width: 0;
+  height: 0;
+}
+
+.images-block__item {
+  margin-bottom: 40px;
 }
 
 
