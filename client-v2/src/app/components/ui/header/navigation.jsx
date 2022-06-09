@@ -28,7 +28,7 @@ const Navigation = ({ categories, onSelectCategory, selectedCategory }) => {
 };
 
 Navigation.propTypes = {
-    categories: PropTypes.array,
+    categories: PropTypes.arrayOf(PropTypes.object),
     onSelectCategory: PropTypes.func,
     selectedCategory: PropTypes.string
 };

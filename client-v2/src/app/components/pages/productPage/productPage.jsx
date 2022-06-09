@@ -6,7 +6,6 @@ import ImageContainer from "../../common/imageContainer";
 import ImagesBlock from "../../ui/imagesBlock";
 import ProductInfo from "../../ui/productInfo";
 import { generateProductId } from "../../../utils/generateProductId";
-import "./productPage.css";
 
 const ProductPage = () => {
     const { product, selectedAttributes, changeAttributes } = useProduct();
@@ -16,19 +15,7 @@ const ProductPage = () => {
 
     const handleSelectAttributes = (name, value) => {
         changeAttributes(name, value);
-        // setSelectedAttributes(prevState => ({
-        //     ...prevState,
-        //     [name]: value
-        // }))
     };
-
-    // const validate = () => {
-    //     const isValid =
-    //         Object.keys(selectedAttributes).length === product?.attributes?.length
-    //         && Object.keys(selectedAttributes).length !== 0;
-    //     if (isValid) setIsValid(true);
-    //     return isValid;
-    // };
 
     const handleSelectImageFromGallery = (index) => {
         setSelectedImageIndex(index);
@@ -40,8 +27,6 @@ const ProductPage = () => {
         setSelectedImageIndex((prevState) => prevState + 1);
     };
     const handleAddToCart = () => {
-        // if (!isValid) return;
-
         const productId = generateProductId(product, selectedAttributes);
         const newItem = {
             id: productId,
@@ -80,7 +65,6 @@ const ProductPage = () => {
                         selectedCurrency={selectedCurrency}
                         onSelectAttributes={handleSelectAttributes}
                         selectedAttributes={selectedAttributes}
-                        // isValid={isValid}
                         onAddToCart={handleAddToCart}
                     />
                 </div>

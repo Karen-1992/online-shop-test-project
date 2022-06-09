@@ -20,7 +20,14 @@ const Header = () => {
         isCurrencySelect,
         handleShowSelectionCurrency
     } = useCurrencies();
-    const { cartOrder, clearCart, quantity } = useCart();
+    const {
+        cartOrder,
+        clearCart,
+        quantity,
+        updateQuantity,
+        updateAttributes,
+        getTotalPrice
+    } = useCart();
     const [isCartOverlay, setIsCartOverlay] = useState(false);
     const handleShowCartOverlay = () => {
         setIsCartOverlay((prevState) => !prevState);
@@ -63,6 +70,9 @@ const Header = () => {
                     quantity={quantity}
                     selectedCurrency={selectedCurrency}
                     clearCart={clearCart}
+                    updateQuantity={updateQuantity}
+                    updateAttributes={updateAttributes}
+                    getTotalPrice={getTotalPrice}
                 />
             )}
         </header>

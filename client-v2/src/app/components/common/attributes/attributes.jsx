@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Attribute from "./attribute";
+import AttributeItems from "./attributeItems";
 import { getInitAttributes } from "../../../utils/getInitAttributes";
 import "./attributes.css";
 
-const Attributes = ({ attributes, onSelectAttributes, selectedAttributes }) => {
+const Attributes = ({ attributes, onSelectAttributes, selectedAttributes, isCartOverlay }) => {
     if (Object.keys(selectedAttributes).length === 0) {
         selectedAttributes = getInitAttributes(attributes);
     } else {
@@ -16,11 +16,12 @@ const Attributes = ({ attributes, onSelectAttributes, selectedAttributes }) => {
     return (
         <div className="product-page__info__attributes">
             {attributes.map((attribute) => (
-                <Attribute
+                <AttributeItems
                     key={attribute.id}
                     attribute={attribute}
                     onSelectAttributes={onSelectAttributes}
                     selectedAttributes={selectedAttributes}
+                    isCartOverlay={isCartOverlay}
                 />
             ))}
         </div>
@@ -28,9 +29,10 @@ const Attributes = ({ attributes, onSelectAttributes, selectedAttributes }) => {
 };
 
 Attributes.propTypes = {
-    attributes: PropTypes.array,
+    attributes: PropTypes.arrayOf(PropTypes.object),
     onSelectAttributes: PropTypes.func,
-    selectedAttributes: PropTypes.object
+    selectedAttributes: PropTypes.object,
+    isCartOverlay: PropTypes.bool
 };
 
 export default Attributes;

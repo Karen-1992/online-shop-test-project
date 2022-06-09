@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Price = ({ prices, selectedCurrency }) => {
+const Price = ({ prices, selectedCurrency, fontSize, fontWeight }) => {
     const price = prices.find(
         (price) => price.currency.symbol === selectedCurrency
     );
@@ -11,9 +11,8 @@ const Price = ({ prices, selectedCurrency }) => {
                 <h2
                     className="price"
                     style={{
-                        fontSize: "24px",
-                        fontWeight: "700",
-                        padding: "20px 0"
+                        fontSize: fontSize,
+                        fontWeight: fontWeight
                     }}
                 >
                     {price.currency.symbol}
@@ -24,9 +23,16 @@ const Price = ({ prices, selectedCurrency }) => {
     );
 };
 
+Price.defaultProps = {
+    fontSize: "24px",
+    fontWeight: "700"
+};
+
 Price.propTypes = {
-    prices: PropTypes.array,
-    selectedCurrency: PropTypes.string
+    prices: PropTypes.arrayOf(PropTypes.object),
+    selectedCurrency: PropTypes.string,
+    fontSize: PropTypes.string,
+    fontWeight: PropTypes.string
 };
 
 export default Price;

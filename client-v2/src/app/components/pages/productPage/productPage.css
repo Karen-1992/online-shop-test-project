@@ -26,6 +26,10 @@
     width: 292px;
 }
 
+.product-page__info__price {
+    margin-top: 10px;
+}
+
 .add-button {
     width: 100%;
     height: 52px;
@@ -34,10 +38,6 @@
     color: #fff;
     background-color: #5ece7b;
     border: none;
-}
-
-.add-button-valid {
-    opacity: 1;
 }
 
 .product-page__info__description p {
@@ -54,12 +54,6 @@
     display: flex;
     flex-direction: column;
     justify-content: end;
-}
-
-.images-block {
-    overflow: auto;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
 }
 
 .images-block::-webkit-scrollbar {

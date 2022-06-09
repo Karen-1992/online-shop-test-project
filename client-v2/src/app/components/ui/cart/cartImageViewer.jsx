@@ -37,7 +37,7 @@ const CartImageViewer = ({ gallery }) => {
 };
 
 CartImageViewer.propTypes = {
-    gallery: PropTypes.array
+    gallery: PropTypes.arrayOf(PropTypes.string.isRequired)
 };
 
 export default CartImageViewer;

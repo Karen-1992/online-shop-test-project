@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom";
 import { useCart } from "../../../hooks/useCart";
 import { useCurrencies } from "../../../hooks/useCurrencies";
 import CartItem from "../../ui/cart/cartItem";
-import "./cartPage.css";
 
 const CartPage = () => {
     const history = useHistory();
@@ -11,12 +10,13 @@ const CartPage = () => {
         cartOrder,
         updateQuantity,
         quantity,
-        getTotalPrice,
-        updateAttributes
+        // getTotalPrice,
+        updateAttributes,
+        getTotalPrice
     } = useCart();
     const { selectedCurrency } = useCurrencies();
     const taxPercent = 21;
-    const totalPrice = getTotalPrice(selectedCurrency).toFixed(2);
+    const totalPrice = getTotalPrice(selectedCurrency);
     const taxAmount = (totalPrice * ((100 - taxPercent) / 100)).toFixed(2);
 
     return (
@@ -24,7 +24,7 @@ const CartPage = () => {
             {cartOrder.length > 0 ? (
                 <div>
                     <div className="cart__container">
-                        <h1>Cart</h1>
+                        <h1 className="cart__container__title">Cart</h1>
                         {cartOrder.map((item, index) => (
                             <CartItem
                                 key={index + item.id}
@@ -38,18 +38,6 @@ const CartPage = () => {
                         ))}
                     </div>
                     <div className="order-container">
-                        {/* <div className="total-price">
-                            <div className="total-price__keys">
-                                <p>Tax {taxPercent}%:</p>
-                                <p>Quantity:</p>
-                                <p>Total:</p>
-                            </div>
-                            <div className="total-price__values">
-                                <p> {taxAmount}</p>
-                                <p> {quantity}</p>
-                                <p>{totalPrice}{selectedCurrency}</p>
-                            </div>
-                        </div> */}
                         <table className="order__table">
                             <tbody>
                                 <tr>

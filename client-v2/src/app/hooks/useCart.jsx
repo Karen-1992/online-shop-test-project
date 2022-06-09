@@ -27,14 +27,17 @@ const CartProvider = ({ children }) => {
                     id: item.id,
                     product: item.product,
                     selectedAttributes: item.selectedAttributes,
-                    quantity: item.quantity
+                    quantity: item.quantity,
+                    price: item.product.prices.find(
+                        (price) => price.currency.symbol === localStorage.getItem("currency")
+                    )
                 });
             } else {
                 const index = result.findIndex((i) => i.id === item.id);
                 result[index].quantity += item.quantity;
             }
         }
-        // localStorage.setItem("cartOrder", JSON.stringify(result));
+        console.log(result);
         return result;
     }
 
@@ -75,21 +78,8 @@ const CartProvider = ({ children }) => {
             const totalProdPrice = prodPrice.amount * prod.quantity;
             totalPrice += totalProdPrice;
         }
-        return totalPrice;
+        return totalPrice.toFixed(2);
     }
-
-    // function setOrder(selectedCurrency) {
-    //     const arr = [];
-    //     for (const prod of cartOrder) {
-    //         const prodPrice = prod.product.prices.find((price) => {
-    //             return price.currency.symbol === selectedCurrency;
-    //         });
-    //         arr.push({
-    //             prod
-    //         })
-    //     }
-    //     return cartOrder;
-    // }
 
     return (
         <CartContext.Provider

@@ -21,7 +21,7 @@ const ImagesBlock = ({ gallery, onSelectImageFromGallery }) => {
 };
 
 ImagesBlock.propTypes = {
-    gallery: PropTypes.array,
+    gallery: PropTypes.arrayOf(PropTypes.string.isRequired),
     onSelectImageFromGallery: PropTypes.func
 };
 

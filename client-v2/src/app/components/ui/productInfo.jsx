@@ -9,8 +9,7 @@ const ProductInfo = ({
     selectedCurrency,
     onSelectAttributes,
     selectedAttributes,
-    onAddToCart,
-    isValid
+    onAddToCart
 }) => {
     return (
         <div className="product-page__info">
@@ -19,17 +18,18 @@ const ProductInfo = ({
                 attributes={product.attributes}
                 onSelectAttributes={onSelectAttributes}
                 selectedAttributes={selectedAttributes}
+                isCartOverlay={false}
             />
             <h3 className="price-title">price:</h3>
-            <Price
-                prices={product.prices}
-                selectedCurrency={selectedCurrency}
-            />
+            <div className="product-page__info__price">
+                <Price
+                    prices={product.prices}
+                    selectedCurrency={selectedCurrency}
+                />
+            </div>
             {product.inStock && (
                 <button
-                    className={
-                        "add-button" + (isValid ? " add-button-valid" : " ")
-                    }
+                    className="add-button"
                     onClick={onAddToCart}
                 >
                     Add to cart
@@ -48,8 +48,7 @@ ProductInfo.propTypes = {
     selectedCurrency: PropTypes.string,
     onSelectAttributes: PropTypes.func,
     selectedAttributes: PropTypes.object,
-    onAddToCart: PropTypes.func,
-    isValid: PropTypes.bool
+    onAddToCart: PropTypes.func
 };
 
 export default ProductInfo;

@@ -1,22 +1,14 @@
 import React from "react";
-import Price from "../../common/price";
 import { useCart } from "../../../hooks/useCart";
 
 const Order = () => {
-    const { cartOrder, regulateCartOrder } = useCart();
+    const { cartOrder, regulateCartOrder, quantity, getTotalPrice } = useCart();
     const selectedCurrency = localStorage.getItem("currency") || "$";
     const cartOrderTotal = regulateCartOrder(cartOrder);
-    // const getPrice = (item) => {
-    //     const price = item.prices.find((price) => {
-    //         return price.currency.symbol === selectedCurrency;
-    //     })
-    //     return price;
-    // };
-    // console.log(getPrice(cartOrderTotal[0].product))
     return (
         <>
             <h1>Your order</h1>
-            <table>
+            <table className="order-table">
                 <thead>
                     <tr>
                         <th>№</th>
@@ -28,38 +20,40 @@ const Order = () => {
                         <th>Total price</th>
                     </tr>
                 </thead>
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th>{quantity}</th>
+                        <th></th>
+                        <th>{getTotalPrice(selectedCurrency)} {selectedCurrency}</th>
+                    </tr>
+                </tfoot>
                 <tbody>
                     {cartOrderTotal.map((item, index) => (
                         <tr key={item.id}>
                             <th>{index + 1}</th>
                             <td>{item.product.name}</td>
                             <td>{item.product.brand}</td>
-                            <td>attributes</td>
-                            {/* {Object.entries(item.selectedAttributes).map(atr => (
-                                <td>
-                                    <span>{atr[0]}</span>
-                                    <span>{atr[1]}</span>
-                                </td>
-                            ))} */}
+                            <td>
+                                {Object.entries(item.selectedAttributes).map(atr => (
+                                    <p key={atr}>
+                                        <span>{atr[0]}: </span>
+                                        <span>{atr[1]}</span>
+                                    </p>
+                                ))}
+                            </td>
                             <td>{item.quantity}</td>
                             <td>
-                                <Price
-                                    selectedCurrency={selectedCurrency}
-                                    prices={item.product.prices}
-                                />
+                                {item.price.amount} {item.price.currency.symbol}
                             </td>
-                            <td>{index + 1}</td>
+                            <td>
+                                {item.price.amount * item.quantity} {item.price.currency.symbol}
+                            </td>
                         </tr>
                     ))}
-                    {/* <tr>
-                        <th>1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
-                    </tr> */}
                 </tbody>
             </table>
         </>

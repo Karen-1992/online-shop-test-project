@@ -5,7 +5,6 @@ import { useCurrencies } from "../../../hooks/useCurrencies";
 import { useCart } from "../../../hooks/useCart";
 import { generateProductId } from "../../../utils/generateProductId";
 import { getInitAttributes } from "../../../utils/getInitAttributes";
-import "./productsListPage.css";
 
 const ProductsListPage = () => {
     const { cartOrder, addToCart, updateQuantity } = useCart();

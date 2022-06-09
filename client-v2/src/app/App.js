@@ -7,6 +7,7 @@ import CurrenciesProvider from "./hooks/useCurrencies";
 import CartProvider from "./hooks/useCart";
 import Cart from "./layouts/cart";
 import Products from "./layouts/products";
+import Order from "./components/pages/orderPage/order";
 
 const App = () => {
     return (
@@ -17,9 +18,14 @@ const App = () => {
                         <Header />
                         <Switch>
                             <Route
-                                path="/cart/:order?"
+                                path="/cart"
                                 exact
                                 component={Cart}
+                            />
+                            <Route
+                                path="/cart/order"
+                                exact
+                                component={Order}
                             />
                             <Route
                                 path="/:categoryName?/:productId?"

@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import ProductTitle from "../../common/productTitle";
 import Price from "../../common/price";
 import { generateProductId } from "../../../utils/generateProductId";
-import CartImageViewer from "./cartImageViewer";
 import QuantitySwitcher from "../../common/quantitySwitcher/quantitySwitcher";
 import Attributes from "../../common/attributes/attributes";
+import ImageContainer from "../../common/imageContainer";
 
-const CartItem = ({
+const CartOverlayItem = ({
     cartOrder,
     cartItem,
     cartItemIndex,
@@ -16,9 +15,13 @@ const CartItem = ({
     updateAttributes
 }) => {
     const { product } = cartItem;
+    const isCartOverlay = true;
     const [selectedAttributes, setSelectedAttributes] = useState(
         cartItem.selectedAttributes
     );
+    // const [selectedAttributes] = useState(
+    //     cartItem.selectedAttributes
+    // );
 
     const [productId, setProductId] = useState(
         generateProductId(cartItem.product, selectedAttributes)
@@ -43,6 +46,7 @@ const CartItem = ({
         );
         updateQuantity();
     }, [productId]);
+
     const [selectedQuantity, setSelectedQuantity] = useState(cartItem.quantity);
 
     const handleIncrementQuantity = () => {
@@ -58,35 +62,47 @@ const CartItem = ({
         }
     };
     return (
-        <div className="cart-item__container">
+        <div className="cart-overlay__item">
             <div>
-                <ProductTitle brand={product.brand} name={product.name} />
-                <div className="cart-item__price">
+                <div className="cart-overlay__item__title">
+                    <p>{product.brand}</p>
+                    <p>{product.name}</p>
+                </div>
+                <div className="cart-overlay__item__price">
                     <Price
                         prices={product.prices}
                         selectedCurrency={selectedCurrency}
+                        fontSize="16px"
+                        fontWeight="500"
                     />
                 </div>
                 <Attributes
                     attributes={product.attributes}
                     selectedAttributes={selectedAttributes}
                     onSelectAttributes={handleSelectAttributes}
-                    isCartOverlay={false}
+                    isCartOverlay={isCartOverlay}
                 />
             </div>
-            <div className="cart-item__right-block">
+            <div className="cart-overlay__item__right-block">
                 <QuantitySwitcher
                     selectedQuantity={selectedQuantity}
                     onIncrementQuantity={handleIncrementQuantity}
                     onDecrementQuantity={handleDecrementQuantity}
+                    height="24px"
+                    width="24px"
+                    fontSize="16px"
                 />
-                <CartImageViewer gallery={product.gallery} />
+                <ImageContainer
+                    height="190px"
+                    width="121px"
+                    src={product.gallery[0]}
+                />
             </div>
         </div>
     );
 };
 
-CartItem.propTypes = {
+CartOverlayItem.propTypes = {
     cartOrder: PropTypes.arrayOf(PropTypes.object),
     cartItem: PropTypes.object,
     cartItemIndex: PropTypes.number,
@@ -95,4 +111,4 @@ CartItem.propTypes = {
     updateAttributes: PropTypes.func
 };
 
-export default CartItem;
+export default CartOverlayItem;

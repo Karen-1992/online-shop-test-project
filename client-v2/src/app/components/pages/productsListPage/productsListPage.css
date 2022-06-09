@@ -1,18 +1,13 @@
 .category-title {
     font-size: 42px;
     font-weight: 400;
-    text-transform: lowercase;
+    text-transform: capitalize;
     margin-bottom: 103px;
-}
-
-.category-title::first-letter {
-    text-transform: uppercase;
 }
 
 .products {
     display: flex;
     flex-wrap: wrap;
-    border: 1px solid red;
     justify-content: space-between;
 }
 
@@ -90,7 +85,3 @@ p {
     font-size: 18px;
     font-weight: 500;
 }
-
-/* .price {
-    font-weight: 700;
-} */
