@@ -10,12 +10,10 @@ const TextAttribute = ({
 }) => {
     return (
         <div
-            onClick={() =>
-                onSelectAttributes(
-                    attribute.name,
-                    atr.displayValue
-                )
-            }
+            onClick={onSelectAttributes && (() => onSelectAttributes(
+                attribute.name,
+                atr.displayValue
+            ))}
             className={
                 "attribute__item" + " attribute__item__text " + (isCartOverlay && "attribute__item__text-overlay") +
                 (selectedAttributes[attribute.name] ===

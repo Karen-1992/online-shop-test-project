@@ -41,19 +41,19 @@ const CartProvider = ({ children }) => {
                 result[index].quantity += item.quantity;
             }
         }
-        return result;
+        return (result.sort((a, b) => {
+            if (a.id > b.id) {
+                return 1;
+            }
+            if (a.id < b.id) {
+                return -1;
+            }
+            return 0;
+        }));
     }
 
     function updateQuantity() {
         setQuantity(getQuantity(cartOrder));
-    }
-    function updateAttributes(item, itemIndex, productId, selectedAttributes) {
-        cartOrder[itemIndex] = {
-            ...item,
-            id: productId,
-            selectedAttributes
-        };
-        localStorage.setItem("cartOrder", JSON.stringify(cartOrder));
     }
 
     function addToCart(item) {
@@ -97,7 +97,6 @@ const CartProvider = ({ children }) => {
                 quantity,
                 updateQuantity,
                 getTotalPrice,
-                updateAttributes,
                 regulateCartOrder,
                 handleShowCartOverlay,
                 isCartOverlay,

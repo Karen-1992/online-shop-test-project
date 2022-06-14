@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import ProductTitle from "../../common/productTitle";
 import Price from "../../common/price";
-import { generateProductId } from "../../../utils/generateProductId";
 import CartImageViewer from "./cartImageViewer";
 import QuantitySwitcher from "../../common/quantitySwitcher/quantitySwitcher";
 import Attributes from "../../common/attributes/attributes";
@@ -12,37 +11,10 @@ const CartItem = ({
     cartItem,
     cartItemIndex,
     selectedCurrency,
-    updateQuantity,
-    updateAttributes
+    updateQuantity
 }) => {
     const { product } = cartItem;
-    const [selectedAttributes, setSelectedAttributes] = useState(
-        cartItem.selectedAttributes
-    );
-
-    const [productId, setProductId] = useState(
-        generateProductId(cartItem.product, selectedAttributes)
-    );
-
-    const handleSelectAttributes = (name, value) => {
-        setSelectedAttributes((prevState) => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
-
-    useEffect(() => {
-        setProductId(generateProductId(cartItem.product, selectedAttributes));
-    }, [selectedAttributes]);
-    useEffect(() => {
-        updateAttributes(
-            cartItem,
-            cartItemIndex,
-            productId,
-            selectedAttributes
-        );
-        updateQuantity();
-    }, [productId]);
+    const selectedAttributes = cartItem.selectedAttributes;
     const [selectedQuantity, setSelectedQuantity] = useState(cartItem.quantity);
 
     const handleIncrementQuantity = () => {
@@ -70,7 +42,6 @@ const CartItem = ({
                 <Attributes
                     attributes={product.attributes}
                     selectedAttributes={selectedAttributes}
-                    onSelectAttributes={handleSelectAttributes}
                     isCartOverlay={false}
                 />
             </div>

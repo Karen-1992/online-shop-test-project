@@ -1,7 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Price from "../../common/price";
-import { generateProductId } from "../../../utils/generateProductId";
 import QuantitySwitcher from "../../common/quantitySwitcher/quantitySwitcher";
 import Attributes from "../../common/attributes/attributes";
 import ImageContainer from "../../common/imageContainer";
@@ -11,39 +10,11 @@ const CartOverlayItem = ({
     cartItem,
     cartItemIndex,
     selectedCurrency,
-    updateQuantity,
-    updateAttributes
+    updateQuantity
 }) => {
     const { product } = cartItem;
     const isCartOverlay = true;
-    const [selectedAttributes, setSelectedAttributes] = useState(
-        cartItem.selectedAttributes
-    );
-
-    const [productId, setProductId] = useState(
-        generateProductId(cartItem.product, selectedAttributes)
-    );
-
-    const handleSelectAttributes = (name, value) => {
-        setSelectedAttributes((prevState) => ({
-            ...prevState,
-            [name]: value
-        }));
-    };
-
-    useEffect(() => {
-        setProductId(generateProductId(cartItem.product, selectedAttributes));
-    }, [selectedAttributes]);
-    useEffect(() => {
-        updateAttributes(
-            cartItem,
-            cartItemIndex,
-            productId,
-            selectedAttributes
-        );
-        updateQuantity();
-    }, [productId]);
-
+    const selectedAttributes = cartItem.selectedAttributes;
     const [selectedQuantity, setSelectedQuantity] = useState(cartItem.quantity);
 
     const handleIncrementQuantity = () => {
@@ -76,7 +47,6 @@ const CartOverlayItem = ({
                 <Attributes
                     attributes={product.attributes}
                     selectedAttributes={selectedAttributes}
-                    onSelectAttributes={handleSelectAttributes}
                     isCartOverlay={isCartOverlay}
                 />
             </div>
@@ -104,8 +74,7 @@ CartOverlayItem.propTypes = {
     cartItem: PropTypes.object,
     cartItemIndex: PropTypes.number,
     selectedCurrency: PropTypes.string,
-    updateQuantity: PropTypes.func,
-    updateAttributes: PropTypes.func
+    updateQuantity: PropTypes.func
 };
 
 export default CartOverlayItem;

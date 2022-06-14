@@ -28,7 +28,6 @@ const Header = () => {
         clearCart,
         quantity,
         updateQuantity,
-        updateAttributes,
         getTotalPrice,
         handleShowCartOverlay,
         isCartOverlay,
@@ -93,7 +92,6 @@ const Header = () => {
                     quantity={quantity}
                     selectedCurrency={selectedCurrency}
                     updateQuantity={updateQuantity}
-                    updateAttributes={updateAttributes}
                     getTotalPrice={getTotalPrice}
                     onViewCart={handleViewCart}
                     onCheckout={handleCheckout}

@@ -19,12 +19,10 @@ const SwatchAttribute = ({
             }
         >
             <div
-                onClick={() =>
-                    onSelectAttributes(
-                        attribute.name,
-                        atr.displayValue
-                    )
-                }
+                onClick={onSelectAttributes && (() => onSelectAttributes(
+                    attribute.name,
+                    atr.displayValue
+                ))}
                 className="attribute__item attribute__item__swatch"
                 style={{
                     backgroundColor: atr.value

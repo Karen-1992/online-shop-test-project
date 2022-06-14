@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import TextAttribute from "./textAttribute";
 import SwatchAttribute from "./swatchAttribute";
 
-const AttributeItems = ({ attribute, onSelectAttributes, selectedAttributes, isCartOverlay }) => {
+const AttributeItems = ({ attribute, isCartOverlay, ...rest }) => {
     return (
         <div className="attribute">
             <h3 className={"attribute__name " + (isCartOverlay && "attribute__name-overlay")}
@@ -19,18 +19,16 @@ const AttributeItems = ({ attribute, onSelectAttributes, selectedAttributes, isC
                             key={atr.id}
                             atr={atr}
                             attribute={attribute}
-                            onSelectAttributes={onSelectAttributes}
-                            selectedAttributes={selectedAttributes}
                             isCartOverlay={isCartOverlay}
+                            {...rest}
                         />
                     ) : (
                         <TextAttribute
                             key={atr.id}
                             atr={atr}
                             attribute={attribute}
-                            onSelectAttributes={onSelectAttributes}
-                            selectedAttributes={selectedAttributes}
                             isCartOverlay={isCartOverlay}
+                            {...rest}
                         />
                     )
                 )}
@@ -41,8 +39,6 @@ const AttributeItems = ({ attribute, onSelectAttributes, selectedAttributes, isC
 
 AttributeItems.propTypes = {
     attribute: PropTypes.object,
-    onSelectAttributes: PropTypes.func,
-    selectedAttributes: PropTypes.object,
     isCartOverlay: PropTypes.bool
 };
 

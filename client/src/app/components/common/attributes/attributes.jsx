@@ -4,7 +4,11 @@ import AttributeItems from "./attributeItems";
 import { getInitAttributes } from "../../../utils/getInitAttributes";
 import "./attributes.css";
 
-const Attributes = ({ attributes, onSelectAttributes, selectedAttributes, isCartOverlay }) => {
+const Attributes = ({
+    attributes,
+    selectedAttributes = {},
+    ...rest
+}) => {
     if (Object.keys(selectedAttributes).length === 0) {
         selectedAttributes = getInitAttributes(attributes);
     } else {
@@ -19,9 +23,8 @@ const Attributes = ({ attributes, onSelectAttributes, selectedAttributes, isCart
                 <AttributeItems
                     key={attribute.id}
                     attribute={attribute}
-                    onSelectAttributes={onSelectAttributes}
                     selectedAttributes={selectedAttributes}
-                    isCartOverlay={isCartOverlay}
+                    {...rest}
                 />
             ))}
         </div>
@@ -30,9 +33,7 @@ const Attributes = ({ attributes, onSelectAttributes, selectedAttributes, isCart
 
 Attributes.propTypes = {
     attributes: PropTypes.arrayOf(PropTypes.object),
-    onSelectAttributes: PropTypes.func,
-    selectedAttributes: PropTypes.object,
-    isCartOverlay: PropTypes.bool
+    selectedAttributes: PropTypes.object
 };
 
 export default Attributes;

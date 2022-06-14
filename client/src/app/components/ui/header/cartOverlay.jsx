@@ -7,7 +7,6 @@ const CartOverlay = ({
     cartOrder,
     selectedCurrency,
     updateQuantity,
-    updateAttributes,
     getTotalPrice,
     onViewCart,
     onCheckout
@@ -28,7 +27,6 @@ const CartOverlay = ({
                             selectedCurrency={selectedCurrency}
                             updateQuantity={updateQuantity}
                             cartOrder={cartOrder}
-                            updateAttributes={updateAttributes}
                             cartItemIndex={index}
                         />
                     ))
@@ -59,7 +57,6 @@ CartOverlay.propTypes = {
     onCheckout: PropTypes.func,
     quantity: PropTypes.number,
     updateQuantity: PropTypes.func,
-    updateAttributes: PropTypes.func,
     getTotalPrice: PropTypes.func,
     onViewCart: PropTypes.func
 };
